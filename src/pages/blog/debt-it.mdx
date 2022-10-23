@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Debt-It"
+description: "Group Expenses Organizer Mobile App"
+date: "2021-11-30"
+img: "blogs/debt-it.png"
+embedId: "_DDWNE8V6mI"
+isMobile: true
+tags:
+  [
+    "Mobile App",
+    "React Native",
+    "Expo",
+    "Node",
+    "Express",
+    "MongoDB",
+    "AWS S3",
+    "JavaScript",
+    "Vercel",
+  ]
+---
+
+# Debt-It: Group Expenses Organizer
+
+This is the first **Fullstack Mobile Application** that I've built. **Debt-It** is a mobile app used to track debts/bills between your friends, travel buddies, family, roommates and etc.
+
+## About the app
+
+- Video Demo [here](#demo-embedid)
+
+Every user in this app can build a team by inviting other users to the group. In this group page is where they can track expenses, see the balance, and also check who's the debitor and who's the creditor.
+
+The algorithm used for calculating the balance in this app is **Greedy Algorithm**. This algo will check the most debitor and the most creditor in the group and balance out the expenses between them first. Once they've settled up, the algo will find the next most debitor and creditor and balance out the expenses between them. This pattern will keep repeating until the remainder is zero.
+
+## Other Feature: Group Profile Photo
+
+Every user can imports their own profile photo. For this feature, I used **AWS S3** for image storing.
+
+## Techstacks
+
+For the backend development, I used **Node** and **Express** and my go-to noSQL database, **MongoDB**. And as mentioned previously, **AWS S3** for image storing.
+
+For the client side, I used **React Native Expo**, **Redux**, and **JavaScript**.
+
+## Code Snippets
+
+Frontend: **AppNavigator.tsx**
+
+```tsx
+export default function AppNavigator() {
+    .
+    .
+    .
+    return (
+        <NavigationContainer>
+            {
+                user ? <AppStack /> : <AuthStack />
+            }
+        </NavigationContainer>
+    )
+}
+```
+
+This is the navigation structure for logged in user and logged out user. The **user** variable is the user info/status (in forms of token, boolean, or etc). The **AppStack** component contains the screens for logged in user such as home screen, dashboard screen, and etc. And the **AuthStack** component contains the screens for logged out user such as login screen and register screen.
+
+So if the user is logged in, then they can navigate to the screens in **AppStack** component and if the user is logged out, they can only go to the login screen and register screen (which is in **AuthStack** component).

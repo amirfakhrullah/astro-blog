@@ -1,0 +1,40 @@
+---
+import portfolioImage from "../../public/amir.jpg";
+
+const title = "Amir's Blogs";
+const description =
+  "Place where I write about coding and showcase all my projects";
+const connectLists = [
+  {
+    label: "GitHub",
+    link: "https://github.com/amirfakhrullah",
+  },
+  {
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/amir-fakhrullah-358000199/",
+  },
+];
+---
+
+<div class="flex flex-row items-center gap-6">
+  <div class="md:block hidden w-28 h-w-28 rounded-xl overflow-hidden">
+    <img src={portfolioImage} />
+  </div>
+  <div>
+    <h2 class="md:text-4xl text-2xl font-black font-sans mb-2">{title}</h2>
+    <p class="text-gray-400">
+      {description}
+    </p>
+    <div class="flex flex-row items-center gap-2 mt-2">
+      {
+        connectLists.map((list) => (
+          <a href={list.link} target="_blank">
+            <div class="border border-gray-400 rounded px-4 py-1 hover:bg-gray-800 ease-in duration-150 cursor-pointer">
+              <p class="text-gray-400">{list.label}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>

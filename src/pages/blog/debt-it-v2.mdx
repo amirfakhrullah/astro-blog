@@ -1,0 +1,63 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Debt-It V2"
+description: "Huge upgrade/revamp of the UI and architecture of the app"
+date: "2022-05-30"
+img: "/blogs/debt-it-v2.png"
+isMobile: true
+tags:
+  [
+    "Mobile App",
+    "React Native",
+    "Expo",
+    "Node",
+    "Express",
+    "MongoDB",
+    "AWS S3",
+    "TypeScript",
+    "Vercel",
+    "AWS Elastic Beanstalk",
+  ]
+---
+
+# Debt-It V2: Group Expenses Organizer
+
+Track debts/bills between your friends, travel buddies, family and roommates easily.
+
+## About the app
+
+![debt-it](/blogs/debt-it-demo.JPG)
+
+- Become a beta tester: [debt-it.xyz](https://debt-it.xyz)
+
+## About
+
+This app is a solution for settling debts in group expenses. Every user in this app can build a team by inviting other users to the group. Here, they can track expenses, see the balance, and also check who's the debitor and who's the creditor.
+
+With this app, you wouldn't have to calculate the expense balance for your group, all you need to do is check-in the expenses and you can see the creditors, the debitors and amount needed to be paid right away.
+
+The algorithm integrated in the app will minimise the amount of transaction needed to clear out debts between group members.
+
+## Techstacks Changes
+
+- One of the big changes is the whole frontend and backend are written in **TypeScript**
+- Using AWS **CodePipeline** and **Elastic Beanstalk** for automated server deployments
+- Backend architecture revamp to works with the calculations efficiently
+- Whole UI upgrade with unnecessary features removed and new useful features
+
+## Code Snippets
+
+Backend: **src/utils/calculations.ts**
+
+```tsx
+export const getTotalSpent = ({ allExpenses }: GetTotalSpent): number => {
+  return allExpenses?.reduce((acc: number, expense: ExpenseDocument) => {
+    if (expense.payback) {
+      return acc;
+    } else {
+      return acc + expense.amount;
+    }
+  }, 0);
+};
+```
+This is a backend function that is used to calculate the current total spending of a user.

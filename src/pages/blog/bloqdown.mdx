@@ -1,0 +1,81 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "BloqDown: Markdown Forum/Blog Site"
+description: "Simple Markdown Forum/Blog site using Next.js, Next-Auth, TypeScript, tRPC, Prisma and PlanetScale"
+date: "2022-06-13"
+img: "/blogs/bloqdown.JPG"
+tags:
+  [
+    "Web App",
+    "Next.js",
+    "TailwindCSS",
+    "DaisyUI",
+    "tRPC",
+    "Prisma",
+    "PlanetScale",
+    "TypeScript",
+    "Vercel",
+  ]
+---
+
+# BloqDown: Markdown Forum/Blog Site
+
+I've been wanting to try **tRPC** and **Prisma** for a while. Since I got some free time, I decided to create a simple project using those techs.
+
+## Description
+
+BloqDown is an open-source Simple Markdown Forum/Blog site using **Next.js**, **Next-Auth**, **TypeScript**, **Prisma**, **PlanetScale** and **tRPC**. The aim here is to learn how to properly use these techstacks.
+
+![bloqdown](/blogs/bloqdown.JPG)
+
+- Live: [bloqdown.amfr.me](https://bloqdown.amfr.me)
+- Source Code: [GitHub Repo](https://github.com/amirfakhrullah/bloqdown)
+
+## Goals
+
+I know the UI for this project is not great. But that's not the goal for building this site. The goals for this project are:
+
+- Creating fully typesafe APIs using **tRPC**
+
+- Using **Prisma** as **TypeScript ORM**
+
+- Setting up **PlanetScale** as **MySQL** db for the site
+
+- Set cookie for anonymous users thru **Next.js** middleware
+
+- Auth using **Next-Auth** (Github Provider)
+
+- Render post content as markdown using **react-markdown**
+
+## Features
+
+- Users can perform any activity in the site as anonymous or as GitHub user (login via **Next-Auth**)
+
+- Users can delete or edit own posts
+
+- Users can only delete own comments
+
+- Users can like any posts they want
+
+- Can sort posts based on latest and popularity
+
+- Tags Feature: Users allow to add tags to their own posts, and in homepage, they can filter posts by tags
+
+## Techstacks
+
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+- [React-Markdown](https://github.com/remarkjs/react-markdown)
+- [Next-Auth](https://next-auth.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [tRPC](https://trpc.io/)
+- [Prisma](https://www.prisma.io/)
+- [PlanetScale](https://planetscale.com/)
+- [Vercel](https://vercel.com/)
+
+## Conclusion
+
+I really enjoyed using **`tRPC`** as it really helps me in inferring response types and and use them on the frontend. This is really efficient and really improves the developer experience as a **`TypeScript`** Developer.
+
+Overall, this is a really fun build.

@@ -1,0 +1,43 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Shopee Discount Filter Webscraping"
+description: "Find the best offer of your desired product on Shopee website (Malaysia only)"
+date: "2020-12-07"
+tags: []
+---
+
+# Shopee Discount Filter Webscraping
+
+## Description
+
+Find the best offer of your desired product on Shopee website (Malaysia only).
+
+## Technologies
+
+- webscraping
+- Python
+- Selenium
+- BeautifulSoup4
+- chromedriver
+- pprint
+- terminal
+
+## Setup
+
+1- Don't forget to download chromedriver if you haven't already (and put the chromedriver on PATH, or in the same directory as these files). To download: http://chromedriver.chromium.org/downloads
+
+2- Open terminal and cd to the folder of the files
+
+3- Then on the terminal:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install requirements.txt
+python shopeeDiscount.py
+```
+
+## Changeable option
+
+- The number of pages to search is set to 5. To change it, change the page value in line 27 and 87 of shopeeDiscount.py to your desired number of pages
+- If your chrome runs slow and can't fully detect the full discounted products, remove the # on line 29, 30, 35 and 36 in shopeeDiscount.py to slower the search speed (to be detailed in searching)

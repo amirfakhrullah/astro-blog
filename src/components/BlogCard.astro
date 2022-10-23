@@ -1,0 +1,46 @@
+---
+export interface Props {
+  link: string;
+  date: Date;
+  title: string;
+  description: string;
+  img?: string;
+  isMobile?: boolean;
+}
+
+const { link, date, title, description, img, isMobile } = Astro.props;
+---
+
+{
+  img && (
+    <div
+      class:list={[
+        "rounded-t-md border border-neutral-800 overflow-hidden",
+        isMobile ? "h-80 w-auto" : "",
+      ]}
+    >
+      <img src={img} class={isMobile ? "h-full mx-auto" : "w-full"} />
+    </div>
+  )
+}
+<div
+  class={`bg-neutral-800 p-4 mb-4 ${img ? "rounded-b-md" : "rounded-md"}`}
+>
+  <a href={link}>
+    <h3
+      class="text-2xl font-sans font-black hover:underline cursor-pointer mb-2"
+    >
+      {title}
+    </h3>
+  </a>
+  <p>{description}</p>
+  <p class="border-t border-neutral-700 pt-1 mt-4 text-end">
+    Published on {
+      new Date(date).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+    }
+  </p>
+</div>

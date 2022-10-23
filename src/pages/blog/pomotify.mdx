@@ -1,0 +1,75 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Pomotify"
+description: "Pomotify is a Pomodoro app with Spotify integration. Pomodoro is a study method/pattern that is widely used in all over the world. With Spotify integration, users can focus on their study while listening to some playlists without the need to open their Spotify app."
+date: "2022-01-04"
+img: "/blogs/pomotify.JPG"
+tags:
+  [
+    "Web App",
+    "React",
+    "Styled-Components",
+    "Framer-Motion",
+    "Node",
+    "Express",
+    "Spotify API",
+    "JavaScript",
+    "Vercel",
+  ]
+---
+
+# Pomotify: Pomodoro with Spotify
+
+Normally when I want to focus on something without any distraction, no matter if it's studying, or even just doing some work, I would use the Pomodoro technique to get me focus and zone-in
+
+## About the app
+
+![pomotify](/blogs/pomotify.JPG)
+
+Pomotify is a simple **Fullstack** Pomodoro timer app with **Spotify integration**. As a Pomodoro technique user and Spotify lover, I would love to have this kind of application. With Spotify in the web, users can focus on their study/work while listening to some playlists without the need to open their Spotify app.
+
+To check-it out, click the link below:
+
+Live: [https://pomotify.vercel.app](https://pomotify.vercel.app)
+
+## Techstack used
+
+For the client-side, I used **React**, **Styled-Components**, **Material-UI**, **Framer-Motion**.
+For the server side, I used **Node** and **Express**. I also used **Spotify API** for the Spotify integration.
+
+For the deployment, I used **Vercel**.
+
+## Code Snippets
+
+I used **Styled-Components** for styling. I like put all the themes in one file and just call it if I want to use it in any components. This can prevent repetitive codes (Always practice DRY - Dont Repeat Yourself).
+
+Common themes: **theme.js**
+
+```js
+export const theme = {
+  black: "#191414",
+  green: "#1DB954",
+  grey: "#262323",
+  hoverGreen: "#117735",
+  pitchBlack: "black",
+  borderRadius: "12px",
+  textColor: "#f4f4f4",
+  textGrey: "rgba(255, 255, 255, 0.3)",
+  borderLine: "1px solid #1DB954",
+};
+```
+
+I put all the common themes in a variable **theme** and then I will pass this themes as a prop into **ThemeProvider** that wraps the whole app (**index.js**). You can see the code below:
+
+```jsx
+import * as mainTheme from "./theme.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider theme={mainTheme.theme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```

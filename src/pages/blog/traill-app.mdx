@@ -1,0 +1,123 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Traill App"
+description: "Kanban Bug Tracking System - track the bugs and also the development of software/apps."
+date: "2021-09-05"
+img: "/blogs/traill/traill.JPG"
+embedId: "oxrpkId6pew"
+tags:
+  [
+    "Web App",
+    "React",
+    "Redux",
+    "Styled-Components",
+    "React-Beautiful-DND",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Nodemailer",
+    "JavaScript",
+    "Vercel",
+    "Heroku",
+  ]
+---
+
+# Bug/Issue Tracking System: Traill App
+
+I've been wanting to create a bug tracking app, which I could use to track bugs and also to track the development of all the software/apps that I'm working on.
+
+![traill](/blogs/traill/traill.JPG)
+
+So here's **Traill App** - **Fullstack** kanban bug/issue tracking system application. For demo, click the link below:
+
+Live: [https://traill.vercel.app](https://traill.vercel.app/login)
+
+Video Demo [here](#demo-embedid)
+
+- Dummy account for demo:
+- Email: dev@g.com
+- Password: 1234abc@@
+
+## About the app
+
+![traill2](/blogs/traill/traill2.JPG)
+
+![traill](/blogs/traill/traill.JPG)
+
+This bug/issue tracking system application comes with these set of features:
+
+1. **Kanban** - Ticketing system follows the Kanban style (where you can drag a ticket and move it into another container in the kanban board)
+
+2. **A team/organization friendly app** - all bug issues (tickets) are grouped based on the team/organization. A team member can assign a bug issue (ticket) to other member.
+
+3. **Progress tracker** - it tracks the progress based on priority and status in dashboard page.
+
+4. **Privacy protection** - all teams/organizations created in the app are private. To join the team, the admin of the team has to invite the user and the user will receive an invitation link in their email (which expires in 1 hour).
+
+## Other Features
+
+![traill3](/blogs/traill/traill3.JPG)
+
+![traill4](/blogs/traill/traill4.JPG)
+
+1. **Light & Dark Mode** - Users can pick their own preference theme.
+
+2. **Google Login** - For v2.0 release, users can now use Google Login.
+
+## Techstacks
+
+Frontend - **React**, **Redux**, **Styled-Components**, **React-Beautiful-DND**, **Material-UI**, **React-Bootstrap**, **JavaScript**
+
+Backend - **Express**, **Node**, **Nodemailer**, **MongoDB**, **JWT**
+
+Deployments - **Vercel**, **Heroku**
+
+## Challenges
+
+The toughest part in creating this fullstack app is figuring out the web architecture for the app. A lot of time went into researching and planning the web architecture before the development and I am happy with the result.
+
+## Code Snippets
+
+Backend: **auth.controller.js**
+
+```js
+const resetPasswordRequest = async (req, res, next) => {
+  const { email } = req.params;
+
+  const user = await User.findOne({ email });
+  if (!user)
+    return res.status(404).send({
+      success: false,
+      message: "Invalid user",
+    });
+
+  const key = generateResetPasswordKey(user);
+
+  transporter.sendMail(
+    {
+      // email that shares the reset password link
+    },
+    function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    }
+  );
+
+  res.send({
+    success: true,
+    message: "Please check your email to reset the password",
+    data: {
+      id: user._id,
+    },
+  });
+};
+```
+
+To reset the password, user need to send their email. So then the first thing the server will do is check if there's a user with that email.
+
+If not, it will return status 404 to the client side. If the user exists, the server will create a **reset password key** url and send the reset password email with the url to the user. When the user clicks the url, it will brings to the Traill App reset password page and the user will be required to submit the new password. On submit, the client side will do a reset password request to the server with the **reset password key** attached to the params and the new password attached to the body.
+
+The **transporter** in the code above is the nodemailer transporter I used for sending emails.

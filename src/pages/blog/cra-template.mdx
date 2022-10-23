@@ -1,0 +1,56 @@
+---
+title: "React TypeScript TailwindCSS CRA Template"
+description: "CRA template (React 18 & TypeScript) with neccesary packages setup: tailwindcss, react-router, react-query and husky"
+date: "2022-06-03"
+tags: ["Template", "React", "TailwindCSS", "TypeScript", "Husky", "React-Query"]
+---
+
+# React TypeScript TailwindCSS CRA Template
+
+**create-react-app** template (React 18 & TypeScript) with neccesary packages setup: **tailwindcss**, **react-router**, **react-query** and **husky**
+
+## Using the template
+
+```bash
+npx create-react-app my-app --template react-ts-tw
+```
+
+## Features included
+
+- **TailwindCSS** config setup
+- Full **tsconfig.json** rules so that you can easily pick which rules you wanted
+- husky for eslint and prettier formatter pre-commit
+- Extra packages installed: **axios**, **react-router**, **react-query**
+- No unused packages installed
+
+## Suitable Usage
+
+- Simple React project that doesn't really need testing
+- For those who want to quicky develop front-end with typescript and tailwind without wasting time in setting up configs and boilerplates
+
+## For Contributing
+
+- Currently there's no guide for contributing, if you like to contribute to this package, please let me know.
+
+### Cloning the Repo
+
+1. Fork this repo to your github
+2. Git clone to your local machine:
+
+```bash
+git clone ...
+```
+
+### Installation
+
+```bash
+npm install
+npm run husky:prepare
+```
+
+If you get issues with prettier or eslint, simply run:
+
+```bash
+npm run format
+npm run lint:fix
+```
