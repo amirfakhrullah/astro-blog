@@ -5,7 +5,7 @@
  */
 body {
 	font-family: Verdana, sans-serif;
-	margin: auto;
+	margin: auto !important;
 	padding: 20px;
 	max-width: 65ch;
 	text-align: left;
