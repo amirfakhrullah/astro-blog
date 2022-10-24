@@ -19,7 +19,7 @@ const { link, date, title, description, img, isMobile } = Astro.props;
         isMobile ? "h-80 w-auto" : "",
       ]}
     >
-      <img src={img} class={isMobile ? "h-full mx-auto" : "w-full"} />
+      <img alt={`${title}-image`} src={img} class={isMobile ? "h-full mx-auto" : "w-full"} />
     </div>
   )
 }
