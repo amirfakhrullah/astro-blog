@@ -3,11 +3,12 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+  <div
+    class="mt-5 py-5 border-t border-neutral-700 text-center text-sm text-gray-400"
+  >
+    &copy; {today.getFullYear()}
+    <a href="https://amrf.me" target="_blank" class="cursor-pointer underline text-blue-400"
+      >amrf.me</a
+    >. All rights reserved.
+  </div>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>

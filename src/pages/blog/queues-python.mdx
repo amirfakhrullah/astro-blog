@@ -1,0 +1,134 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Data Structures with Python: Queues"
+description: "Basic queue data structure with Python"
+pubDate: "2022-02-02"
+tags: ["Tutorial", "Data Structures", "Python"]
+---
+
+Queue is one of the data structures that a programmer needs to understand. In this article, I will explain how to code a basic queue data structure with Python.
+
+## Pre-requisite
+
+In this article, you need to have a knowledge on **nodes** and **linked list** before proceeding.
+
+## Concept
+
+Queue is a linear collection of node (in linked list). Just like when we are queueing for something, we can add another person (in this case, a node), to the back of the queue, which is called **enqueue**.
+
+We can also **dequeue**, means that the first node in the queue to be removed. Just like when we are queuing to buy a movie ticket, when the first person in the queue go to the counter, the first person will not be in the queue anymore, and the second person lining up will become the first person in the queue.
+
+## 1st Step: Node
+
+First step we need to create node class:
+
+```python
+class Node:
+  def __init__(self, value, next_node=None):
+    self.value = value
+    self.next_node = next_node
+
+  def set_next_node(self, next_node):
+    self.next_node = next_node
+
+  def get_next_node(self):
+    return self.next_node
+
+  def get_value(self):
+    return self.value
+```
+
+This is a basic node class, so I will not be explaining about this code, and focus more on explaining queue.
+
+## 2nd Step: Initialising Queue Class
+
+```python
+class Queue:
+  def __init__(self, max_size=None):
+    self.head = None
+    self.tail = None
+    self.max_size = max_size
+    self.size = 0
+```
+
+To be able to **enqueue** and **dequeue**, we need to know the head and the tail of the queue. Set **`self.head = None`** and **`self.tail = None`**.
+
+We use **`max_size`** to see the limit of the queue size. By default, max_size will be None which means that the queue is unlimited. To set the max size of the queue, we need to pass the **`max_size`** value when initiating Queue class.
+
+And **`self.size`** is the current size of the queue. We set initially to 0 as there's no node in the queue yet. This will be useful when checking if there's empty spot in the queue or not (compare to **`max_size`**).
+
+## 3rd Step: peek, get_size, has_space and is_empty
+
+Then write these codes under the same Queue class:
+
+```python
+def peek(self):
+  if self.size > 0:
+    return self.head.get_value()
+  else:
+    return None
+
+def get_size(self):
+  return self.size
+
+def has_space(self):
+  if self.max_size == None:
+    return True
+  else:
+    return self.max_size > self.get_size()
+
+def is_empty(self):
+  return self.size == 0
+```
+
+**peek** is to see the first node value if the queue is not empty and **get_size** is just to return **`self.size`**.
+
+**has_space** is to check if there's space left to be filled. First it will check if there's a limit size for the queue through **`self.max_size`**. If **`max_size`** is none, which means that the queue size is unlimited, it will return **`True`**. If there's a value for **`max_size`**, it will check through this statement **`self.max_size > self.get_size()`** which will return a boolean value.
+
+**is_empty** is for checking if the queue is empty or not. if **`self_size`** is equal to 0, it will return **`True`**, and if it's not, **`False`**.
+
+## 4th Step: Enqueue
+
+```python
+def enqueue(self, value):
+    if self.has_space():
+        node_to_add = Node(value)
+        if self.is_empty():
+            self.head = node_to_add
+            self.tail = node_to_add
+        else:
+            self.tail.set_next_node(node_to_add)
+            self.tail = node_to_add
+        self.size += 1
+    else:
+        print("Sorry, no more room!")
+```
+
+To enqueue, first we need to check if there's space left in the queue for enqueue the new node. We use **`self.has_space()`** to check this. If it's **`True`**, then we can continue to enqueue the node. Now we implement the Node class to the new value that needed to be added to the queue.
+
+Then, we have to check if the queue is empty or not via **`self.is_empty()`**. If it is empty, this means that the new node (which is **`node_to_add`**), will be the first node in the queue. This means that the node will be the head and the tail of the queue. If the queue is not empty, the **`node_to_add`** will be the new tail node. So we write **`self.tail.set_next_node()`** to set the current tail node in the queue to point to the **`node_to_add`**. And finally we will set the **`node_to_add`** as the new tail node through this line of code, **`self.tail = node_to_add`**. Don't forget to increment the **`self.size`** by 1 as the we have added a new node in the queue.
+
+## 5th Step: Dequeue
+
+```python
+def dequeue(self):
+  if self.get_size() > 0:
+    node_to_remove = self.head
+    if self.get_size() == 1:
+      self.head = None
+      self.tail = None
+    else:
+      self.head = self.head.get_next_node()
+    self.size -= 1
+    return node_to_remove.get_value()
+  else:
+    print("The queue is totally empty!")
+```
+
+To dequeue, first we need to make sure if the queue has a head node. So we started with this if statement, **`self.get_size() > 0`**. If it's **`True`**, then we know that the queue has a head node, so we create a variable **`node_to_remove`** to be equal to **`self.head`**. Next, to remove the head node, we have to set the second node in the queue to be the new head node. But first we have to know if there's node queueing after the head node. If there's none, means that there's only one node queieng (head node = tail node), then we have to set the **`self.head`** and the **`self.tail`** to **`None`**. Else, if there's node queueing after the head node, we can set the **`self.head`** to be equal to the second node in the queue via this, **`self.head = self.head.get_next_node()`**. Decrease the **`self.size`** by 1 as we have removed one node in the queue.
+
+## Done
+
+- Congratulations, now you know how to write queue in Python.
+- To get the full codes, click the link below:
+- [Github](https://github.com/amirfakhrullah/Data-Structures-and-Algorithms/tree/main/queues/py)

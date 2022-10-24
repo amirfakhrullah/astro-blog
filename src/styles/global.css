@@ -52,3 +52,44 @@ blockquote {
 	margin: 0px;
 	font-style: italic;
 }
+
+.article {
+	@apply font-sans
+}
+
+.article h1 {
+	@apply text-4xl mb-2;
+}
+
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
+	@apply text-gray-300 border-b pb-2 border-neutral-700
+}
+
+
+.article strong,
+.article li {
+	@apply text-gray-300;
+	font-size: 16px;
+}
+
+.article a {
+	@apply text-blue-400 
+}
+
+.article p {
+	font-size: 16px;
+}
+
+.article .portfolio {
+	margin: 0
+}
+
+.article .author,
+.article .published {
+	margin: 0 !important;
+}
