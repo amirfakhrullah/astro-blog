@@ -46,3 +46,6 @@ pnpm install
 ```bash
 pnpm run dev
 ```
+## License
+
+License under the [MIT License](./LICENSE)
